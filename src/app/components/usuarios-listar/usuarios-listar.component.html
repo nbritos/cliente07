@@ -1,0 +1,53 @@
+<p>usuarios-listar works!</p>
+
+<table class="table table-dark table-striped table-hover table-bordered table-responsive">
+    <thead class="thead-light">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>password</th>
+        <th>Accion</th>
+    </thead>
+    <tbody *ngIf="usuarios.length > 0; else fila">
+        <tr *ngFor=" let usuario of usuarios">
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.password}}</td>
+			<td><button class="btn btn-danger" (click)=eliminar($event) value="{{usuario.id}}">Eliminar</button></td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+
+<br>
+
+<form (submit)="actualizar()" method="post">
+    <fieldset>
+        <legend>Seleccione un usuario para modificar</legend>
+        <select required [(ngModel)]="id_select" name="id_select" (change)="seleccionaValor($event)" >
+            <option class="dropdown-item" disabled>Seleccione ID</option>
+            <option *ngFor="let usuario of usuarios" [value]="usuario.id" >{{usuario.id}}</option>
+        </select>
+        <input type="text" [(ngModel)]="actual.nombre" name="actual.nombre" placeholder="Nombre">
+        <input type="email" [(ngModel)]="actual.email" name="actual.email" placeholder="Email">
+        <input type="password" [(ngModel)]="actual.password" name="actual.password" placeholder="Contraseña">
+        <input type="text" [(ngModel)]="actual.rol" name="actual.rol" placeholder="Rol">
+        <button class="btn btn-success">Actualizar</button>
+    </fieldset>
+</form>
+<br>
+<form (submit)="agregar()" method="post">
+    <fieldset>
+        <legend>Nuevo usuario</legend>
+        <input type="text" [(ngModel)]="nuevo.nombre" name="nuevo.nombre" placeholder="Nombre">
+        <input type="email" [(ngModel)]="nuevo.email" name="nuevo.email" placeholder="Email">
+        <input type="password" [(ngModel)]="nuevo.password" name="nuevo.password" placeholder="Contraseña">
+        <input type="text" [(ngModel)]="nuevo.rol" name="nuevo.rol" placeholder="Rol">
+        <button class="btn btn-success">Agregar</button>
+    </fieldset>
+</form>

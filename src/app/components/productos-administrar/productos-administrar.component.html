@@ -1,0 +1,63 @@
+<p>productos-administrar works!</p>
+
+<table class="table table-dark table-striped table-hover table-bordered table-responsive">
+    <thead class="thead-light">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>password</th>
+        <th>Accion</th>
+    </thead>
+    <tbody *ngIf="productos.length > 0; else fila">
+        <tr *ngFor=" let producto of productos">
+            <td>{{producto.id}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.precio}}</td>
+            <td><button class="btn btn-danger" (click)=eliminar($event) value="{{producto.id}}">Eliminar</button></td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+
+<br>
+
+<form (submit)="actualizar()" method="post">
+    <fieldset>
+        <legend>Seleccione un producto para modificar</legend>
+        <select required [(ngModel)]="id_select" name="id_select" (change)="seleccionaValor($event)">
+            <option class="dropdown-item" disabled>Seleccione ID</option>
+            <option *ngFor="let producto of productos" [value]="producto.id">{{producto.id}}</option>
+        </select>
+        <input type="text" [(ngModel)]="actual.descripcion" name="actual.descripcion" placeholder="Descripcion">
+        <input type="text" [(ngModel)]="actual.precio" name="actual.precio" placeholder="Precio">
+        <button class="btn btn-success">Actualizar</button>
+    </fieldset>
+</form>
+<br>
+<form (submit)="agregar()" method="post">
+    <fieldset>
+        <legend>Nuevo Producto</legend>
+        <input type="text" [(ngModel)]="nuevo.descripcion" name="nuevo.descripcion" placeholder="Descripcion">
+        <input type="text" [(ngModel)]="nuevo.precio" name="nuevo.precio" placeholder="Precio">
+        <button class="btn btn-success" (click)="validarCampos()">Agregar</button>
+    </fieldset>
+</form>
+
+<div class="errores">
+    <div [ngSwitch]="errorDescripcion" class="bg-secondary text-white">
+        <div *ngSwitchCase="1">Campo descripción no puede estar vacío</div>
+        <div *ngSwitchCase="2">Campo descripción muy largo</div>
+        <div *ngSwitchCase="3">Campo descripción por fuera de caracteres válidos</div>
+    </div>
+
+    <div [ngSwitch]="errorPrecio" class="bg-secondary text-white">
+        <div *ngSwitchCase="1">Debes completar el campo precio</div>
+        <div *ngSwitchCase="2">Valor de precio muy extenso</div>
+        <div *ngSwitchCase="3">Campo capital debe ser alfabético y empezar por mayúscula</div>
+    </div>
+</div>

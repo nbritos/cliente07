@@ -1,0 +1,57 @@
+#uno{
+    background-color:#4a7bac;
+    text-transform: capitalize;
+    text-decoration: underline;
+    background-image: url('../../../assets/media/wall.jpg');
+    opacity: 0.85;
+/*    position:relative;
+    top: 25px;
+    left: 25px;
+    z-index: 3;
+    cursor:crosshair;
+    float: right;*/
+}
+
+#dos{
+    background-color:#5ac191;
+    text-transform: lowercase;
+    text-decoration: line-through;
+    /*float: left;
+    position:relative;
+    top: -25px;
+    left: 50px;
+    z-index: 2;*/
+}
+
+#tres{
+    background-color:#f17687;
+    text-transform: uppercase;
+    text-decoration: overline;
+    /*float: right;
+    position:relative;
+    top: -75px;
+    left: 75px;
+    z-index: 1;*/
+}
+
+.caja{
+    width: 33.33%;
+    height: 33.33%;
+    border-style: dashed;
+    border-width: 2px;
+    border-color: black;
+
+    padding: 5px;
+    float: right;
+    /*margin: 5px;*/
+}
+
+.caja:hover{
+    border-width: 4px;
+    border-color:gold;
+}
+
+.contenedor{
+    text-align: center;
+    height: 100%;
+}

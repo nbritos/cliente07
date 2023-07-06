@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 235, 205);
+    background-image: url('https://img.freepik.com/foto-gratis/composicion-flat-lay-productos-limpieza-copyspace_23-2148133453.jpg?w=1380&t=st=1688658538~exp=1688659138~hmac=17547ed61aab8f3850bf8d3b4741ab551d6e73d67fd0c03b9225a9118a0c21b5');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+app-navigation {
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+}
+
+h1,
+p,
+span,
+legend,
+div {
+    color: #ffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/*
+app-pie{
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    background-color: brown;
+}*/
